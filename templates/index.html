@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+厉害了，手机专卖店！
+{% endblock %}
+{% block content %}
+<div class="container" align="center">
+	{% for p in products %}
+	{% if forloop.first %}
+	<table>
+		<tr bgcolor="#cccccc">
+			<td width="250">库存手机</td>
+			<td width="150">品牌/型号</td>
+			<td width="80">出厂年份</td>
+			<td>价格</td>
+		</tr>
+	{% endif %}
+		<tr bgcolor='{% cycle "#ffccff" "#ccffcc" %}'>
+			<td>{{ p.nickename }}</td>
+			<td>{{ p.pmodel.maker.name }}/{{ p.pmodel }}</td>
+			<td>{{ p.year }}</td>
+			<td align="right">{{ p.price }}</td>
+		</tr>
+	{% if forloop.last %}
+	</table>
+	{% endif %}
+	
+	{% empty %}
+	<h3>目前没有库存的中古手机可以卖，真抱歉！</h3>
+	{% endfor %}
+</div>
+{% endblock %}
