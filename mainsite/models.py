@@ -18,11 +18,11 @@ class PModel(models.Model):
         return self.name
 
 class Product(models.Model):
-    pmodel = models.ForeignKey(PModel, on_delete=models.CASCADE)
-    nickename = models.CharField(max_length=15, default='超值二手机')
-    description = models.TextField(default='暂无说明')
-    year = models.PositiveIntegerField(default=2017)
-    price = models.PositiveIntegerField(default=0)
+    pmodel = models.ForeignKey(PModel, on_delete=models.CASCADE,verbose_name='型号')
+    nickename = models.CharField(max_length=15, default='超值二手机',verbose_name='摘要')
+    description = models.TextField(default='暂无说明',verbose_name='描述')
+    year = models.PositiveIntegerField(default=2017,verbose_name='出厂年份')
+    price = models.PositiveIntegerField(default=0,verbose_name='售价')
 
     def __unicode__(self):
         return self.nickename
